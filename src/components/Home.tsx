@@ -27,69 +27,6 @@ import {
 export default function Home() {
   const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(0);
 
-  // 1-2 line Quotation Slider State & Data (NO BOX CONTAINER)
-  const [activeQuoteIndex, setActiveQuoteIndex] = useState(0);
-
-  const quotationSlides = [
-    {
-      id: "useful-well-last",
-      tag: "FOUNDATIONAL MAXIM",
-      quote: (
-        <span>
-          Make it <span className="gradient-text-cyan">useful.</span>{" "}
-          Make it <span style={{ color: "var(--color-purple)", fontWeight: 900 }}>well.</span>{" "}
-          Make it <span className="gradient-text-amber">last.</span>
-        </span>
-      ),
-      sub: "Resilient physical hardware married to timeless, sovereign computing.",
-      author: "ANE PHILOSOPHY // KOKRAJHAR",
-    },
-    {
-      id: "precision-code",
-      tag: "CORE PRINCIPLE",
-      quote: (
-        <span>
-          Precision in <span className="gradient-text-cyan">physical matter.</span>{" "}
-          Sovereignty in <span className="gradient-text-amber">code.</span>
-        </span>
-      ),
-      sub: "Zero-compromise engineering from sub-micron tolerances to global edge clusters.",
-      author: "ARCHITECTURAL CORE // ASSAM",
-    },
-    {
-      id: "physical-digital",
-      tag: "SYSTEM INQUIRY",
-      quote: (
-        <span>
-          Where hardware ends,{" "}
-          <span className="gradient-text-cyan">spatial computation begins.</span>
-        </span>
-      ),
-      sub: "Unifying 5-axis CNC foundry fabrication with real-time 3D spatial twins.",
-      author: "SPATIAL SYNTHESIS // ANE LABS",
-    },
-    {
-      id: "tolerance",
-      tag: "AEROSPACE TOLERANCE",
-      quote: (
-        <span>
-          Quantum tolerance of{" "}
-          <span className="gradient-text-cyan">±0.002mm</span> meets{" "}
-          <span className="gradient-text-amber">hyperscale cloud.</span>
-        </span>
-      ),
-      sub: "Optical geometric scanning of every millimeter before firmware integration.",
-      author: "DETERMINISTIC FOUNDRY // BTR",
-    },
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveQuoteIndex((prev) => (prev + 1) % quotationSlides.length);
-    }, 4800);
-    return () => clearInterval(timer);
-  }, [quotationSlides.length]);
-
   const heroSlides = [
     {
       image: "/images/3d-modeling/turbine-digital-twin.jpg",
@@ -98,8 +35,8 @@ export default function Home() {
     },
     {
       image: "/images/about/lab-foundry.jpg",
-      title: "KOKRAJHAR HARDWARE LAB & FOUNDRY",
-      meta: "5-AXIS CNC HARDWARE ENCLAVE",
+      title: "KOKRAJHAR 3D PRINTING LAB",
+      meta: "3-AXIS PRECISION FDM PROTOTYPING",
     },
     {
       image: "/images/hero/pillar-cloud.jpg",
@@ -122,23 +59,29 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [heroSlides.length]);
 
-  // Core Services Data: Exactly 2 Boxes (1 for 3D Modeling, 1 for Web / App Development & SaaS)
+  // Core Services Data: Exactly 2 Boxes (1 for 3D Printing, 1 for Web / App Development & SaaS)
   const homeServices = [
     {
-      id: "spatial-3d",
-      tag: "SPATIAL COMPUTING & 3D",
-      title: "3D Modeling & Digital Twins",
-      desc: "High-precision parametric STEP/CAD modeling, aerodynamic CFD simulations, and real-time interactive 60 FPS WebGL 3D viewers for complex engineering assemblies.",
+      id: "3d-printing",
+      tag: "PHYSICAL & PROTOTYPING",
+      title: "Custom 3D Printing & Prototyping",
+      desc: "Turn your digital designs into accurate, durable physical parts. We provide high-quality FDM printing for prototypes, replacement components, functional parts, and custom projects with fast turnarounds and precision.",
       icon: <Box size={24} color="var(--color-cyan)" />,
       image: "/images/3d-modeling/turbine-digital-twin.jpg",
       features: [
-        "Parametric STEP, IGES & SolidWorks CAD Generation",
-        "Real-Time Interactive 60 FPS WebGL 3D Viewers",
-        "Aerodynamic & Computational Fluid Dynamics (CFD)",
-        "Physical-Digital Telemetry Synchronization",
+        "Print-ready STL, OBJ and 3MF file support",
+        "PLA, PETG and flexible-material printing",
+        "Single-colour and multi-colour options",
+        "Functional prototypes and replacement parts",
+        "Personalized gifts, décor and display models",
+        "Basic file inspection, scaling and print optimization",
+        "Layer heights from approximately 0.08–0.28 mm",
+        "Maximum single-part size up to approximately 256 × 256 × 256 mm",
+        "Small-batch and repeat production",
+        "Support removal and basic finishing",
       ],
-      link: "/services",
-      linkText: "Explore 3D Modeling Services",
+      link: "/contact?scope=3d-printing",
+      linkText: "Get a 3D Printing Quote",
     },
     {
       id: "web-app-saas",
@@ -182,23 +125,23 @@ export default function Home() {
   const homeQuestions = [
     {
       q: "What does ANE Technology specialize in?",
-      a: "ANE is a technology company from Kokrajhar, Assam, synthesizing high-precision physical hardware (5-axis CNC enclosures, aerospace alloys) with spatial computing (real-time 3D digital twins) and high-performance sovereign cloud architectures.",
+      a: "ANE is a technology company from Kokrajhar, Assam, synthesizing high-quality 3D printing and rapid hardware prototyping using 3-axis printers with high-performance web applications and cloud architectures.",
     },
     {
       q: "How do your hardware and cloud systems communicate together?",
-      a: "Our hardware systems embed dedicated micro-telemetry controllers that stream real-time sensor metrics through WebAssembly edge runtimes to our distributed cloud mesh, allowing live 3D digital twin tracking and remote diagnostics.",
+      a: "Our hardware systems embed dedicated micro-telemetry controllers that stream real-time sensor metrics through WebAssembly edge runtimes to our distributed cloud mesh, allowing live tracking and remote diagnostics.",
     },
     {
       q: "Can clients commission custom hardware fabrication or custom software?",
-      a: "Yes. We operate dedicated engineering pods for partner companies. We handle end-to-end execution—from initial CAD STEP schematics and material selection to CNC milling, embedded firmware, and production cloud applications under a signed M-NDA.",
+      a: "Yes. We operate dedicated engineering pods for partner companies. We handle end-to-end execution—from initial 3D models and print optimization to rapid physical prototypes and production cloud applications under a signed M-NDA.",
     },
     {
       q: "Where is ANE located and can we visit the physical facilities?",
-      a: "Our primary hardware foundry and deep-tech research lab are located in the Kokrajhar Fabrication Enclave, Bodoland Territorial Region (BTR), Assam, India. Facility visits and on-site prototyping clearances are available by appointment.",
+      a: "Our hardware prototyping lab is located near CIT Kokrajhar, Bodoland Territorial Region (BTR), Assam 783370, India. Facility visits and on-site consultations are available by appointment.",
     },
     {
       q: "What are typical delivery timelines for project sprints?",
-      a: "Seed MVPs and rapid functional prototypes are delivered in 3 to 4 week sprints. Complete production-grade hardware enclosures and distributed enterprise platforms typically require 6 to 12 weeks.",
+      a: "Rapid 3D printed functional prototypes and replacement parts typically ship within 3 to 5 business days. Production software platforms and custom web applications typically deliver in 4 to 8 weeks.",
     },
   ];
 
@@ -253,14 +196,6 @@ export default function Home() {
         </div>
 
         <div className="container-custom" style={{ textAlign: "center", position: "relative", zIndex: 5 }}>
-          {/* Live Deployment Tag */}
-          <div style={{ display: "inline-block", marginBottom: "28px" }}>
-            <div className="tag-pill">
-              <span className="tag-dot" />
-              <span>PROTOCOL: V2 // LIVE DEPLOYMENT | 26.4014° N, 90.2727° E</span>
-            </div>
-          </div>
-
           {/* Main Hero Headline */}
           <h1
             className="hero-title-text"
@@ -289,7 +224,7 @@ export default function Home() {
               fontWeight: 500,
             }}
           >
-            ANE is a technology company from Kokrajhar, Assam, synthesizing precision physical hardware,
+            ANE is a technology company from Kokrajhar, Assam, synthesizing precision 3D printing & hardware prototyping,
             spatial computing, and high-performance cloud architectures.
           </p>
 
@@ -304,10 +239,10 @@ export default function Home() {
               marginBottom: "36px",
             }}
           >
-            <Link href="/services" className="btn-primary-white">
-              <span>Explore Ecosystem</span>
+            <a href="#services" className="btn-primary-white">
+              <span>Explore Services</span>
               <ArrowRight size={16} />
-            </Link>
+            </a>
           </div>
 
           {/* Background Slide Indicator Pill */}
@@ -317,7 +252,7 @@ export default function Home() {
               alignItems: "center",
               justifyContent: "center",
               gap: "10px",
-              marginBottom: "44px",
+              marginBottom: "16px",
               padding: "7px 18px",
               background: "var(--bg-card)",
               borderRadius: "9999px",
@@ -355,171 +290,17 @@ export default function Home() {
                 letterSpacing: "0.05em",
               }}
             >
-              <span style={{ color: "var(--color-cyan)" }}>[{currentSlide + 1}/4]</span>{" "}
+              <span style={{ color: "var(--color-cyan)", fontWeight: 800 }}>
+                0{currentSlide + 1} / 0{heroSlides.length}
+              </span>{" "}
               {heroSlides[currentSlide].title}
             </span>
           </div>
-
-          {/* 3-Part Telemetry Status Bar */}
-          <div
-            className="telemetry-bar"
-            style={{
-              maxWidth: "960px",
-              margin: "0 auto",
-            }}
-          >
-            <div className="telemetry-item" style={{ textAlign: "left" }}>
-              <span className="telemetry-label">PHYSICAL</span>
-              <span className="telemetry-value" style={{ color: "var(--color-cyan)" }}>
-                Quantum Tolerance ±0.002mm
-              </span>
-            </div>
-
-            <div
-              style={{
-                width: "1px",
-                height: "36px",
-                background: "var(--border-subtle)",
-                display: "none",
-              }}
-              className="telemetry-divider"
-            />
-
-            <div className="telemetry-item" style={{ textAlign: "left" }}>
-              <span className="telemetry-label">SYNTHETIC</span>
-              <span className="telemetry-value">Global Mesh Latency 12ms p99</span>
-            </div>
-
-            <div
-              style={{
-                width: "1px",
-                height: "36px",
-                background: "var(--border-subtle)",
-                display: "none",
-              }}
-              className="telemetry-divider"
-            />
-
-            <div className="telemetry-item" style={{ textAlign: "left" }}>
-              <span className="telemetry-label">RUNTIME</span>
-              <span
-                className="telemetry-value"
-                style={{ display: "flex", alignItems: "center", gap: "8px" }}
-              >
-                <span className="tag-dot-mint" />
-                <span>System Synthesis • ACTIVE FULL DUPLEX</span>
-              </span>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* 2. QUOTATION SECTION (Box-free: clean, seamless typography floating directly on page) */}
-      <section
-        style={{
-          padding: "54px 0 28px 0",
-          textAlign: "center",
-          position: "relative",
-        }}
-      >
-        <div className="container-custom" style={{ maxWidth: "860px" }}>
-          {/* Subtle Tag Indicator */}
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              marginBottom: "16px",
-            }}
-          >
-            <span className="tag-dot" />
-            <span
-              className="font-mono"
-              style={{
-                fontSize: "11px",
-                fontWeight: 700,
-                letterSpacing: "0.14em",
-                color: "var(--color-cyan)",
-              }}
-            >
-              {quotationSlides[activeQuoteIndex].tag}
-            </span>
-          </div>
-
-          {/* 1-2 Lines Punchy Quote - NO CARD BOX */}
-          <blockquote
-            style={{
-              fontSize: "clamp(24px, 3.8vw, 40px)",
-              fontWeight: 900,
-              lineHeight: 1.25,
-              letterSpacing: "-0.02em",
-              color: "var(--color-text-main)",
-              margin: "0 0 12px 0",
-            }}
-          >
-            “{quotationSlides[activeQuoteIndex].quote}”
-          </blockquote>
-
-          <p
-            style={{
-              fontSize: "14.5px",
-              color: "var(--color-text-muted)",
-              maxWidth: "600px",
-              margin: "0 auto 22px auto",
-              lineHeight: 1.6,
-            }}
-          >
-            {quotationSlides[activeQuoteIndex].sub}
-          </p>
-
-          {/* Seamless navigation dots & attribution */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "16px",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              {quotationSlides.map((slide, idx) => (
-                <button
-                  key={slide.id}
-                  onClick={() => setActiveQuoteIndex(idx)}
-                  style={{
-                    height: "4px",
-                    width: activeQuoteIndex === idx ? "26px" : "8px",
-                    borderRadius: "2px",
-                    background:
-                      activeQuoteIndex === idx ? "var(--color-cyan)" : "var(--border-subtle)",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: 0,
-                    transition: "all 0.3s ease",
-                  }}
-                  title={slide.tag}
-                  aria-label={`Quotation slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            <span
-              className="font-mono"
-              style={{
-                fontSize: "10.5px",
-                color: "var(--color-text-dim)",
-                letterSpacing: "0.08em",
-                fontWeight: 600,
-              }}
-            >
-              // {quotationSlides[activeQuoteIndex].author}
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. OUR SERVICES SECTION */}
-      <section style={{ padding: "60px 0 50px 0" }}>
+      {/* 2. OUR SERVICES SECTION */}
+      <section id="services" style={{ padding: "60px 0 50px 0" }}>
         <div className="container-custom">
           <div
             style={{
@@ -549,7 +330,7 @@ export default function Home() {
               }}
             />
             <p className="section-desc" style={{ margin: "0 auto" }}>
-              Specialized execution across spatial 3D digital twins and full-scale web application &amp; enterprise SaaS development.
+              Specialized execution across custom 3D printing &amp; rapid prototyping and full-scale web application &amp; enterprise SaaS development.
             </p>
           </div>
 

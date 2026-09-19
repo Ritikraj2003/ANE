@@ -43,14 +43,14 @@ export const TIMELINE_DATA: Milestone[] = [
     tag: "GENESIS",
     title: "The Kokrajhar Seed",
     description:
-      "An experimental hardware hacking workshop established in Kokrajhar, exploring indigenous telemetry hardware & rapid prototyping.",
+      "An experimental hardware workshop established in Kokrajhar, exploring 3D printing hardware & rapid prototyping.",
   },
   {
     year: "2023",
     tag: "EXPANSION",
-    title: "Hardware Foundry",
+    title: "Hardware & Prototyping Lab",
     description:
-      "Commissioning of precision CNC machining and SLA rapid 3D tooling facilities. Delivery of first commercial IoT platforms.",
+      "Commissioning of precision 3-axis 3D printing and rapid FDM tooling facilities. Delivery of first commercial IoT platforms.",
   },
   {
     year: "2024",
@@ -72,9 +72,9 @@ export const TEAM_DATA: TeamMember[] = [
   {
     name: "Barunmoy Basumatary",
     role: "FOUNDER & PRINCIPAL ARCHITECT",
-    bio: "Directs overall hybrid architecture, custom CNC chassis fabrication, and high-reliability embedded firmware. Veteran hardware engineer pioneering northeastern deep tech.",
+    bio: "Directs overall hybrid architecture, custom 3D printing prototyping, and high-reliability embedded firmware. Veteran hardware engineer pioneering northeastern tech.",
     image: "/images/about/team-barunmoy.jpg",
-    location: "Kokrajhar Enclave",
+    location: "Kokrajhar Lab",
   },
   {
     name: "Anushka Datta",
@@ -86,31 +86,35 @@ export const TEAM_DATA: TeamMember[] = [
   {
     name: "Himangshu Brahma",
     role: "HEAD OF INDUSTRIAL DESIGN",
-    bio: "Lead Industrial Designer and 3D parametric engineer, bridging ergonomic form factors with high-spec aerospace-grade manufacturing.",
+    bio: "Lead Industrial Designer and 3D parametric engineer, bridging ergonomic form factors with high-accuracy FDM and multi-material 3D printing.",
     image: "/images/about/team-himangshu.jpg",
-    location: "Kokrajhar Foundry",
+    location: "Kokrajhar Lab",
   },
 ];
 
 export const SERVICES_LIST: ServiceDetail[] = [
   {
-    id: "3d-spatial",
-    title: "3D Modelling & Spatial Engineering",
-    category: "Physical & Spatial",
-    tag: "ENGINEERING TIER: SPATIAL",
+    id: "3d-printing",
+    title: "Custom 3D Printing & Prototyping",
+    category: "Physical & Hardware",
+    tag: "ENGINEERING TIER: 3D PRINTING",
     image: "/images/3d-modeling/turbine-digital-twin.jpg",
     description:
-      "High-precision CAD/CAM development, industrial product visualization, and interactive WebGL/spatial runtime experiences for mission-critical hardware.",
+      "Turn your digital designs into accurate, durable physical parts. We provide high-quality FDM printing for prototypes, replacement components, functional parts, and custom projects with fast turnarounds and precision.",
     capabilities: [
-      "3D CAD & STEP Prototyping",
-      "Photorealistic 4K Renders",
-      "WebGL & Spatial Web Integration",
-      "Reverse Engineering & 3D Scanning",
-      "FEA Stress Analysis Simulation",
-      "Rapid SLA / FDM Print Slicing",
+      "Print-ready STL, OBJ and 3MF file support",
+      "PLA, PETG and flexible-material printing",
+      "Single-colour and multi-colour options",
+      "Functional prototypes and replacement parts",
+      "Personalized gifts, décor and display models",
+      "Basic file inspection, scaling and print optimization",
+      "Layer heights from approximately 0.08–0.28 mm",
+      "Maximum single-part size up to approximately 256 × 256 × 256 mm",
+      "Small-batch and repeat production",
+      "Support removal and basic finishing",
     ],
-    linkText: "EXPLORE 3D SPECS",
-    linkHref: "/contact?scope=3d-spatial",
+    linkText: "GET A 3D PRINTING QUOTE",
+    linkHref: "/contact?scope=3d-printing",
   },
   {
     id: "saas-erp",
@@ -197,7 +201,7 @@ export const FAQS_DATA: FAQItem[] = [
   {
     question: "What is the typical turnaround from brief to prototype?",
     answer:
-      "Initial feasibility models and parametric CAD digital twins are generated within 5-7 business days. Fully functional CNC milled 7075 aluminum enclosures with integrated PCB assemblies typically ship within 3-4 weeks for production MVP tiers.",
+      "Initial feasibility models and 3D print slicing are completed within 24-48 hours. Functional 3D printed prototypes, custom replacement components, and batch prints typically ship within 3-5 days.",
   },
   {
     question: "Who retains Intellectual Property (IP) rights?",

@@ -43,25 +43,25 @@ export default function Contact() {
   const contactSlides = [
     {
       id: "hardware",
-      badge: "PHYSICAL HARDWARE HUB",
+      badge: "3-AXIS 3D PRINTING HUB",
       badgeColor: "var(--color-amber)",
-      title: "Kokrajhar Hardware Lab & Foundry",
-      location: "Fabrication Enclave, BTR, Kokrajhar, Assam 783370",
-      desc: "5-Axis CNC machining, SLA high-temp prototyping, micro-tolerance aluminum enclosures, and on-site hardware clearance.",
+      title: "Kokrajhar 3D Printing & Hardware Lab",
+      location: "Near CIT Kokrajhar, BTR, Assam, 783370",
+      desc: "Custom 3D printing using 3-axis printer, rapid FDM prototyping, functional parts, and precision batch production.",
       email: "hardware@ane.technology",
-      phone: "+91 3661 270 000",
+      phone: "+91 6000212823",
       image: "/images/about/lab-foundry.jpg",
-      sla: "Hardware Bench Response < 8h",
+      sla: "3D Print Quote Response < 4h",
     },
     {
       id: "spatial",
       badge: "3D & SPATIAL COMPUTING",
       badgeColor: "var(--color-cyan)",
       title: "Spatial Digital Twin & CAD Studio",
-      location: "Computational Simulation Matrix, Kokrajhar",
+      location: "Near CIT Kokrajhar, Assam",
       desc: "Precision STEP modeling, aerodynamic CFD analysis, interactive real-time WebGL 3D viewers, and simulation rigs.",
       email: "spatial@ane.technology",
-      phone: "+91 3661 270 001",
+      phone: "+91 6000212823",
       image: "/images/3d-modeling/turbine-digital-twin.jpg",
       sla: "CAD Triage Response < 12h",
     },
@@ -73,7 +73,7 @@ export default function Contact() {
       location: "Global Edge Runtime Matrix",
       desc: "WebAssembly edge clusters, distributed multi-tenant ERP platforms, high-concurrency event brokers, and zero-trust cloud setups.",
       email: "cloud@ane.technology",
-      phone: "+91 3661 270 002",
+      phone: "+91 6000212823",
       image: "/images/hero/pillar-cloud.jpg",
       sla: "Cloud Architecture Review < 14h",
     },
@@ -82,10 +82,10 @@ export default function Contact() {
       badge: "EXECUTIVE & PARTNERSHIPS",
       badgeColor: "var(--color-mint)",
       title: "Executive Strategic Partnerships",
-      location: "Strategic Client Dispatch // Kokrajhar & Global",
+      location: "Near CIT Kokrajhar & Global",
       desc: "Mutual NDAs, enterprise software retainers, custom R&D contracts, dedicated developer pods, and government deep-tech collaborations.",
       email: "contact@ane.technology",
-      phone: "+91 3661 270 003",
+      phone: "+91 6000212823",
       image: "/images/hero/pillar-hardware.jpg",
       sla: "Priority Response < 4h",
     },
@@ -99,35 +99,34 @@ export default function Contact() {
     return () => clearInterval(timer);
   }, [contactSlides.length]);
 
-  const budgetTiers = [
-    {
-      id: "seed-mvp",
-      label: "< $15k",
-      tierName: "Seed MVP",
-      estimate: "3 - 4 Weeks Sprint",
-    },
-    {
-      id: "prod-core",
-      label: "$25k - $50k",
-      tierName: "Production Core",
-      estimate: "6 - 8 Weeks Sprint",
-    },
-    {
-      id: "scale-sys",
-      label: "$50k - $100k",
-      tierName: "Scale System",
-      estimate: "10 - 14 Weeks Sprint",
-    },
-    {
-      id: "enterprise-labs",
-      label: "$100k+",
-      tierName: "Enterprise Labs",
-      estimate: "Dedicated Pod",
-    },
+  // Amazon / Flipkart-Style Price Range Filter State
+  const [minBudget, setMinBudget] = useState(5000);
+  const [maxBudget, setMaxBudget] = useState(50000);
+  const [activePricePreset, setActivePricePreset] = useState<string>("5k-25k");
+
+  const pricePresets = [
+    { id: "under-5k", label: "Under ₹5,000", min: 1000, max: 5000, tier: "Rapid 3D Print / Small Part" },
+    { id: "5k-25k", label: "₹5,000 – ₹25,000", min: 5000, max: 25000, tier: "Functional Prototype / Batch" },
+    { id: "25k-75k", label: "₹25,000 – ₹75,000", min: 25000, max: 75000, tier: "Advanced Prototyping & CAD" },
+    { id: "75k-200k", label: "₹75,000 – ₹2,00,000", min: 75000, max: 200000, tier: "Production Web App / SaaS MVP" },
+    { id: "above-200k", label: "₹2,00,000+", min: 200000, max: 500000, tier: "Enterprise Systems & R&D Pod" },
   ];
 
-  const currentBudget =
-    budgetTiers.find((b) => b.id === selectedBudget) || budgetTiers[1];
+  const getEstimatedTimeline = () => {
+    if (maxBudget <= 5000) return "24 – 48 Hours Turnaround";
+    if (maxBudget <= 25000) return "3 – 5 Days Sprint";
+    if (maxBudget <= 75000) return "1 – 2 Weeks Sprint";
+    if (maxBudget <= 200000) return "3 – 6 Weeks Sprint";
+    return "Dedicated Pod / 8+ Weeks";
+  };
+
+  const getTierName = () => {
+    if (maxBudget <= 5000) return "Rapid Prototyping";
+    if (maxBudget <= 25000) return "Functional Production";
+    if (maxBudget <= 75000) return "Custom Engineering";
+    if (maxBudget <= 200000) return "Production MVP";
+    return "Enterprise Core";
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -473,7 +472,9 @@ export default function Contact() {
                       marginLeft: "6px",
                     }}
                   >
-                    [{activeSlide + 1}/{contactSlides.length}]
+                    <span style={{ color: "var(--color-cyan)", fontWeight: 800 }}>
+                      0{activeSlide + 1} / 0{contactSlides.length}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -546,7 +547,7 @@ export default function Contact() {
                       fontWeight: 600,
                     }}
                   >
-                    26.4014° N, 90.2727° E
+                    CIT Kokrajhar, Assam
                   </span>
                 </div>
 
@@ -558,7 +559,7 @@ export default function Contact() {
                     marginBottom: "18px",
                   }}
                 >
-                  Kokrajhar Fabrication Enclave, Bodoland Territorial Region (BTR), Assam 783370, India.
+                  Near CIT Kokrajhar, Bodoland Territorial Region (BTR), Assam 783370, India.
                 </p>
 
                 {/* Embedded Interactive Google Map */}
@@ -571,7 +572,7 @@ export default function Contact() {
                   }}
                 >
                   <iframe
-                    src="https://maps.google.com/maps?q=Kokrajhar,+Assam,+India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    src="https://maps.google.com/maps?q=CIT+Kokrajhar,+Assam,+India&t=&z=14&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0, display: "block" }}
@@ -594,44 +595,38 @@ export default function Contact() {
                   }}
                 >
                   <a
-                    href="https://www.google.com/maps/place/Kokrajhar,+Assam"
+                    href="https://www.google.com/maps/place/Central+Institute+of+Technology+Kokrajhar"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-secondary-dark"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "6px",
-                      fontSize: "13px",
-                      padding: "8px 16px",
-                      textDecoration: "none",
-                    }}
+                    style={{ fontSize: "12.5px", padding: "8px 14px" }}
                   >
-                    <ExternalLink size={14} color="var(--color-cyan)" />
                     <span>Open in Google Maps</span>
+                    <ExternalLink size={13} />
                   </a>
 
                   <button
                     onClick={() => setIsVisitModalOpen(true)}
-                    className="btn-secondary-dark"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "6px",
-                      fontSize: "13px",
-                      padding: "8px 16px",
-                    }}
+                    className="btn-primary-cyan"
+                    style={{ fontSize: "12.5px", padding: "8px 16px" }}
                   >
-                    <Calendar size={14} color="var(--color-mint)" />
-                    <span>Book Lab Visit</span>
+                    <Calendar size={13} />
+                    <span>Request Lab Visit</span>
                   </button>
                 </div>
               </div>
 
-              {/* Card 2: Contact Information & Hours */}
+              {/* Card 2: Contact Information & Direct Touchpoints */}
               <div className="glass-card" style={{ padding: "26px" }}>
-                <h3 style={{ fontSize: "17px", fontWeight: 700, color: "var(--color-text-main)", marginBottom: "16px" }}>
-                  Direct Contact Information
+                <h3
+                  style={{
+                    fontSize: "17px",
+                    fontWeight: 700,
+                    color: "var(--color-text-main)",
+                    marginBottom: "18px",
+                  }}
+                >
+                  Direct Engineering Touchpoints
                 </h3>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
@@ -653,15 +648,15 @@ export default function Contact() {
                     </div>
                     <div>
                       <div style={{ fontSize: "12px", color: "var(--color-text-dim)", textTransform: "uppercase" }}>
-                        General Inquiries
+                        Primary Electronic Mail
                       </div>
                       <a
                         href="mailto:contact@ane.technology"
                         style={{
-                          color: "var(--color-text-main)",
-                          textDecoration: "none",
+                          color: "var(--color-cyan)",
                           fontWeight: 600,
                           fontSize: "14px",
+                          textDecoration: "none",
                         }}
                       >
                         contact@ane.technology
@@ -690,7 +685,7 @@ export default function Contact() {
                         Headquarters Phone
                       </div>
                       <div style={{ color: "var(--color-text-main)", fontWeight: 600, fontSize: "14px" }}>
-                        +91 (0) 3661 270 000
+                        +91 6000212823
                       </div>
                     </div>
                   </div>
@@ -728,22 +723,16 @@ export default function Contact() {
             <div
               className="glass-card"
               style={{
-                padding: "32px",
-                borderColor: "rgba(0, 240, 255, 0.3)",
+                padding: "36px",
+                border: "1px solid var(--border-active)",
               }}
             >
-              <div
-                style={{
-                  borderBottom: "1px solid var(--border-subtle)",
-                  paddingBottom: "18px",
-                  marginBottom: "24px",
-                }}
-              >
+              <div style={{ marginBottom: "24px" }}>
                 <div
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
-                    gap: "6px",
+                    gap: "8px",
                     marginBottom: "8px",
                   }}
                 >
@@ -803,7 +792,7 @@ export default function Contact() {
                     }}
                   >
                     Thank you for reaching out to ANE Labs. Your inquiry has been routed to our Kokrajhar
-                    architectural team. We will contact you at <strong>{email}</strong> shortly.
+                    team. We will contact you at <strong>{email}</strong> shortly.
                   </p>
 
                   <button
@@ -882,34 +871,28 @@ export default function Contact() {
                         className="cyber-input"
                         style={{ cursor: "pointer" }}
                       >
-                        <option value="spatial-3d">Spatial 3D Modeling &amp; Digital Twin</option>
-                        <option value="hardware-cnc">Precision Hardware &amp; Foundry Fabrication</option>
-                        <option value="cloud-saas">Enterprise Cloud, SaaS &amp; Distributed ERP</option>
-                        <option value="custom-rd">Custom Sensory R&amp;D &amp; Deep-Tech</option>
+                        <option value="3d-printing">Custom 3D Printing &amp; Rapid Prototyping</option>
+                        <option value="web-app-saas">Web / App Development &amp; Enterprise SaaS</option>
+                        <option value="spatial-3d">Spatial 3D Modeling &amp; Digital Twins</option>
+                        <option value="custom-rd">Custom Sensory R&amp;D &amp; Hardware</option>
                         <option value="general">General Partnership / Other</option>
                       </select>
                     </div>
                   </div>
 
-                  {/* Project Budget & Timeline Selector */}
-                  <div
-                    style={{
-                      backgroundColor: "var(--card-inner-bg)",
-                      border: "1px solid var(--border-subtle)",
-                      borderRadius: "10px",
-                      padding: "16px",
-                    }}
-                  >
+                  {/* Amazon / Flipkart Style Price Range Filter */}
+                  <div className="price-filter-box">
                     <div
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
-                        marginBottom: "12px",
+                        flexWrap: "wrap",
+                        gap: "8px",
                       }}
                     >
                       <label className="cyber-label" style={{ marginBottom: 0 }}>
-                        Estimated Budget Scale
+                        Estimated Budget Scale (Price Range Filter)
                       </label>
                       <span
                         className="font-mono"
@@ -919,52 +902,108 @@ export default function Contact() {
                           color: "var(--color-cyan)",
                         }}
                       >
-                        {currentBudget.label} ({currentBudget.tierName})
+                        ₹{minBudget.toLocaleString("en-IN")} – ₹{maxBudget.toLocaleString("en-IN")}+ ({getTierName()})
                       </span>
                     </div>
 
-                    {/* Tier Pills */}
-                    <div
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-                        gap: "8px",
-                        marginBottom: "12px",
-                      }}
-                    >
-                      {budgetTiers.map((tier) => (
+                    {/* Dual Range Slider Bar */}
+                    <div className="price-range-slider-wrapper">
+                      <div className="price-range-track-bg" />
+                      <div
+                        className="price-range-track-highlight"
+                        style={{
+                          left: `${Math.min(100, Math.max(0, (minBudget / 500000) * 100))}%`,
+                          width: `${Math.min(100, Math.max(0, ((maxBudget - minBudget) / 500000) * 100))}%`,
+                        }}
+                      />
+                      <input
+                        type="range"
+                        min={1000}
+                        max={500000}
+                        step={1000}
+                        value={minBudget}
+                        onChange={(e) => {
+                          const val = Math.min(Number(e.target.value), maxBudget - 1000);
+                          setMinBudget(val);
+                          setActivePricePreset("");
+                        }}
+                        className="dual-range-input"
+                        aria-label="Minimum budget range"
+                      />
+                      <input
+                        type="range"
+                        min={1000}
+                        max={500000}
+                        step={1000}
+                        value={maxBudget}
+                        onChange={(e) => {
+                          const val = Math.max(Number(e.target.value), minBudget + 1000);
+                          setMaxBudget(val);
+                          setActivePricePreset("");
+                        }}
+                        className="dual-range-input"
+                        aria-label="Maximum budget range"
+                      />
+                    </div>
+
+                    {/* Min & Max Price Input Boxes (Amazon / Flipkart layout) */}
+                    <div className="price-range-inputs-row">
+                      <div className="price-input-card">
+                        <span className="price-input-currency">Min: ₹</span>
+                        <input
+                          type="number"
+                          value={minBudget}
+                          min={1000}
+                          max={maxBudget}
+                          onChange={(e) => {
+                            const val = Number(e.target.value);
+                            setMinBudget(val);
+                            setActivePricePreset("");
+                          }}
+                          className="price-input-field"
+                          placeholder="1,000"
+                        />
+                      </div>
+
+                      <span style={{ color: "var(--color-text-dim)", fontWeight: 700, fontSize: "13px" }}>to</span>
+
+                      <div className="price-input-card">
+                        <span className="price-input-currency">Max: ₹</span>
+                        <input
+                          type="number"
+                          value={maxBudget}
+                          min={minBudget}
+                          max={1000000}
+                          onChange={(e) => {
+                            const val = Number(e.target.value);
+                            setMaxBudget(val);
+                            setActivePricePreset("");
+                          }}
+                          className="price-input-field"
+                          placeholder="50,000"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Popular Budget Brackets / Filter Chips */}
+                    <div className="price-presets-wrap">
+                      {pricePresets.map((preset) => (
                         <button
                           type="button"
-                          key={tier.id}
-                          onClick={() => setSelectedBudget(tier.id)}
-                          style={{
-                            padding: "9px 10px",
-                            borderRadius: "6px",
-                            border:
-                              selectedBudget === tier.id
-                                ? "1px solid var(--color-cyan)"
-                                : "1px solid var(--border-subtle)",
-                            background:
-                              selectedBudget === tier.id
-                                ? "rgba(0, 240, 255, 0.15)"
-                                : "var(--bg-card)",
-                            color:
-                              selectedBudget === tier.id
-                                ? "var(--color-cyan)"
-                                : "var(--color-text-main)",
-                            fontFamily: "var(--font-mono)",
-                            fontSize: "11px",
-                            fontWeight: 700,
-                            cursor: "pointer",
-                            textAlign: "center",
-                            transition: "all 0.15s ease",
+                          key={preset.id}
+                          onClick={() => {
+                            setMinBudget(preset.min);
+                            setMaxBudget(preset.max);
+                            setActivePricePreset(preset.id);
                           }}
+                          className={`price-preset-chip ${activePricePreset === preset.id ? "active" : ""}`}
                         >
-                          {tier.label}
+                          {preset.label}
                         </button>
                       ))}
                     </div>
 
+                    {/* Dynamic Sprint Timeline */}
                     <div
                       style={{
                         fontSize: "12px",
@@ -975,7 +1014,7 @@ export default function Contact() {
                       }}
                     >
                       <span className="tag-dot-mint" />
-                      <span>Estimated Timeline: {currentBudget.estimate}</span>
+                      <span>Estimated Timeline: {getEstimatedTimeline()}</span>
                     </div>
                   </div>
 
@@ -1194,7 +1233,7 @@ export default function Contact() {
             >
               <div className="tag-pill">
                 <span className="tag-dot" />
-                <span>KOKRAJHAP ON-SITE LAB CLEARANCE</span>
+                <span>KOKRAJHAR ON-SITE LAB CLEARANCE</span>
               </div>
               <button
                 onClick={() => setIsVisitModalOpen(false)}
@@ -1216,7 +1255,7 @@ export default function Contact() {
               Request Hardware Lab Visit
             </h4>
             <p style={{ fontSize: "13.5px", color: "var(--color-text-muted)", lineHeight: 1.6, marginBottom: "20px" }}>
-              On-site prototyping clearances are available for engineering partners. Please provide your visit details.
+              On-site 3D printing &amp; prototyping clearances are available for engineering partners. Please provide your visit details.
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginBottom: "24px" }}>
@@ -1231,8 +1270,8 @@ export default function Contact() {
               <div>
                 <label className="cyber-label">Purpose of Lab Visit</label>
                 <select className="cyber-input">
-                  <option>5-Axis CNC Milling &amp; Tolerance Inspection</option>
-                  <option>SLA High-Temp Resin Prototyping Review</option>
+                  <option>3D Printing Prototyping &amp; Tolerance Inspection</option>
+                  <option>FDM &amp; Flexible Material Prototyping Review</option>
                   <option>Embedded Firmware Telemetry Integration</option>
                   <option>Academic &amp; Student Research Delegation</option>
                 </select>

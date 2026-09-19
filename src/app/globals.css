@@ -520,14 +520,160 @@ body {
 
 .cyber-label {
   display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--color-text-main);
   margin-bottom: 7px;
-  text-transform: uppercase;
+  text-transform: none;
 }
+
+/* Amazon / Flipkart Style Price Range Filter */
+.price-filter-box {
+  background: var(--card-inner-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.price-range-slider-wrapper {
+  position: relative;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.price-range-track-bg {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border-subtle);
+}
+
+.price-range-track-highlight {
+  position: absolute;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--color-cyan) 0%, #00b4d8 100%);
+  pointer-events: none;
+}
+
+.dual-range-input {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  background: transparent;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.dual-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dual-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
+}
+
+.dual-range-input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.price-range-inputs-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.price-input-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 6px 10px;
+  gap: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.price-input-card:focus-within {
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.15);
+}
+
+.price-input-currency {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-cyan);
+}
+
+.price-input-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.price-presets-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.price-preset-chip {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.price-preset-chip:hover {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+.price-preset-chip.active {
+  background: rgba(0, 240, 255, 0.12);
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+}
+
 
 /* Contact Slider Styles */
 .contact-slide-card {

@@ -411,10 +411,10 @@ export default function About() {
                   <CheckCircle size={16} color="var(--color-cyan)" style={{ marginTop: "3px", flexShrink: 0 }} />
                   <div>
                     <span style={{ fontWeight: 700, color: "var(--color-text-main)", fontSize: "13.5px" }}>
-                      Zero-Compromise Fabrication:{" "}
+                      Zero-Compromise Prototyping:{" "}
                     </span>
                     <span style={{ color: "var(--color-text-muted)", fontSize: "13.5px" }}>
-                      Aerospace-grade CNC milling with sub-micron geometric verification.
+                      High-precision 3-axis 3D printing, FDM multi-material production, and rapid turnaround.
                     </span>
                   </div>
                 </div>
@@ -517,7 +517,7 @@ export default function About() {
                   marginBottom: "28px",
                 }}
               >
-                To establish Kokrajhar, Assam as an internationally recognized epicenter for dual-native physical and spatial engineering, bridging high-precision CNC hardware with autonomous cloud intelligence to power the next century of resilient computing.
+                To establish Kokrajhar, Assam as an internationally recognized epicenter for dual-native physical and spatial engineering, bridging precision 3D printing &amp; rapid hardware prototyping with autonomous cloud intelligence to power the next century of resilient computing.
               </p>
 
               {/* Key Vision Pillars */}
@@ -857,15 +857,15 @@ export default function About() {
 
               <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "13px" }}>
-                  <span style={{ color: "var(--color-text-muted)" }}>CNC Cycle Queue:</span>
+                  <span style={{ color: "var(--color-text-muted)" }}>3D Print Bed Queue:</span>
                   <span className="font-mono" style={{ color: "var(--color-cyan)" }}>
                     3 AVAILABLE
                   </span>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "13px" }}>
-                  <span style={{ color: "var(--color-text-muted)" }}>Optical Tolerance:</span>
+                  <span style={{ color: "var(--color-text-muted)" }}>Layer Precision:</span>
                   <span className="font-mono" style={{ color: "#FFFFFF" }}>
-                    ± 0.002 mm
+                    0.08 – 0.28 mm
                   </span>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "13px" }}>

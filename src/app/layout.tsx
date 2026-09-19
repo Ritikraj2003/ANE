@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Digital Twin",
     "Enterprise SaaS",
     "Hardware Prototyping",
-    "CNC Machining",
+    "3D Printing",
     "Deep Tech India",
   ],
   icons: {
